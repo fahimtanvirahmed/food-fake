@@ -8,12 +8,34 @@ import java.util.List;
 
 public class RestaurantModel implements Parcelable {
 
+    private int id;
     private String name;
     private String address;
     private String image;
     private float delivery_charge;
     private Hours hours;
     private List<Menu> menus;
+
+    public RestaurantModel() {
+    }
+
+    public RestaurantModel(int id, String name, String address, String image, float delivery_charge, Hours hours, List<Menu> menus) {
+        this.id = id;
+        this.name = name;
+        this.address = address;
+        this.image = image;
+        this.delivery_charge = delivery_charge;
+        this.hours = hours;
+        this.menus = menus;
+    }
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
 
     public String getName() {
         return name;
@@ -64,6 +86,7 @@ public class RestaurantModel implements Parcelable {
     }
 
     protected RestaurantModel(Parcel in) {
+        id=in.readInt();
         name = in.readString();
         address = in.readString();
         image = in.readString();
@@ -90,6 +113,7 @@ public class RestaurantModel implements Parcelable {
 
     @Override
     public void writeToParcel(Parcel dest, int flags) {
+        dest.writeInt(id);
         dest.writeString(name);
         dest.writeString(address);
         dest.writeString(image);

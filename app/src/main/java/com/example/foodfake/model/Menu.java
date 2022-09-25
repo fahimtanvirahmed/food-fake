@@ -10,6 +10,22 @@ public class Menu implements Parcelable {
     private int totalInCart;
     private String url;
 
+    public Menu() {
+    }
+
+    public Menu(String name, float price, String url) {
+        this.name = name;
+        this.price = price;
+        this.url = url;
+    }
+
+    public Menu(String name, float price, int totalInCart, String url) {
+        this.name = name;
+        this.price = price;
+        this.totalInCart = totalInCart;
+        this.url = url;
+    }
+
     public int getTotalInCart() {
         return totalInCart;
     }

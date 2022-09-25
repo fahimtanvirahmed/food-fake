@@ -1,34 +1,30 @@
 package com.example.foodfake;
 
 
-import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
-import androidx.appcompat.app.ActionBar;
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.appcompat.widget.SwitchCompat;
-import androidx.recyclerview.widget.LinearLayoutManager;
-import androidx.recyclerview.widget.RecyclerView;
-
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
-import android.text.TextUtils;
 import android.view.MenuItem;
 import android.view.View;
-import android.widget.CompoundButton;
-import android.widget.EditText;
 import android.widget.TextView;
+
+import androidx.annotation.NonNull;
+import androidx.appcompat.app.ActionBar;
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.foodfake.adapters.PlaceYourOrderAdapter;
 import com.example.foodfake.model.Menu;
 import com.example.foodfake.model.RestaurantModel;
+import com.google.firebase.database.FirebaseDatabase;
 
 public class PlaceYourOrderActivity extends AppCompatActivity {
 
     //private EditText inputName, inputAddress, inputCity, inputState, inputZip,inputCardNumber, inputCardExpiry, inputCardPin ;
     private RecyclerView cartItemsRecyclerView;
     private TextView tvSubtotalAmount, tvDeliveryChargeAmount, tvDeliveryCharge, tvTotalAmount, buttonPlaceYourOrder;
-   // private SwitchCompat switchDelivery;
+    // private SwitchCompat switchDelivery;
     private boolean isDeliveryOn;
     private PlaceYourOrderAdapter placeYourOrderAdapter;
 
@@ -107,11 +103,11 @@ public class PlaceYourOrderActivity extends AppCompatActivity {
     private void calculateTotalAmount(RestaurantModel restaurantModel) {
         float subTotalAmount = 0f;
 
-        for(Menu m : restaurantModel.getMenus()) {
+        for (Menu m : restaurantModel.getMenus()) {
             subTotalAmount += m.getPrice() * m.getTotalInCart();
         }
 
-        tvSubtotalAmount.setText("tk"+String.format("%.2f", subTotalAmount));
+        tvSubtotalAmount.setText("tk" + String.format("%.2f", subTotalAmount));
         /*
         if(isDeliveryOn) {
             tvDeliveryChargeAmount.setText("tk"+String.format("%.2f", restaurantModel.getDelivery_charge()));
@@ -119,20 +115,23 @@ public class PlaceYourOrderActivity extends AppCompatActivity {
         }
 
          */
-        tvTotalAmount.setText("tk"+String.format("%.2f", subTotalAmount));
+        tvTotalAmount.setText("tk" + String.format("%.2f", subTotalAmount));
     }
 
     private void onPlaceOrderButtonClick(RestaurantModel restaurantModel) {
 
+        FirebaseDatabase.getInstance().getReference("orders").child("uid").setValue(restaurantModel.getMenus()).addOnCompleteListener(t -> {
+            if (t.isSuccessful()) {
+                Intent i = new Intent(PlaceYourOrderActivity.this, OrderSucceessActivity.class);
+                i.putExtra("RestaurantModel", restaurantModel);
+                startActivity(i);
+            }
+        });
 
-        Intent i = new Intent(PlaceYourOrderActivity.this, OrderSucceessActivity.class);
-        i.putExtra("RestaurantModel", restaurantModel);
-        startActivity(i);
 
-       // startActivityForResult(i, 1000);
-       // startActivity(new Intent(PlaceYourOrderActivity.this, OrderSucceessActivity.class));
+        // startActivityForResult(i, 1000);
+        // startActivity(new Intent(PlaceYourOrderActivity.this, OrderSucceessActivity.class));
     }
-
 
 
     private void initRecyclerView(RestaurantModel restaurantModel) {
@@ -158,7 +157,7 @@ public class PlaceYourOrderActivity extends AppCompatActivity {
     public boolean onOptionsItemSelected(@NonNull MenuItem item) {
 
         switch (item.getItemId()) {
-            case android.R.id.home :
+            case android.R.id.home:
                 finish();
             default:
                 //do nothing
