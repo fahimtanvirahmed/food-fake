@@ -17,12 +17,14 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.example.foodfake.adapters.PlaceYourOrderAdapter;
 import com.example.foodfake.model.Menu;
 import com.example.foodfake.model.RestaurantModel;
+import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.FirebaseDatabase;
 
 public class PlaceYourOrderActivity extends AppCompatActivity {
 
     //private EditText inputName, inputAddress, inputCity, inputState, inputZip,inputCardNumber, inputCardExpiry, inputCardPin ;
     private RecyclerView cartItemsRecyclerView;
+    private FirebaseAuth firebaseAuth;
     private TextView tvSubtotalAmount, tvDeliveryChargeAmount, tvDeliveryCharge, tvTotalAmount, buttonPlaceYourOrder;
     // private SwitchCompat switchDelivery;
     private boolean isDeliveryOn;
@@ -119,8 +121,9 @@ public class PlaceYourOrderActivity extends AppCompatActivity {
     }
 
     private void onPlaceOrderButtonClick(RestaurantModel restaurantModel) {
+        firebaseAuth =FirebaseAuth.getInstance();
 
-        FirebaseDatabase.getInstance().getReference("orders").child("uid").setValue(restaurantModel.getMenus()).addOnCompleteListener(t -> {
+        FirebaseDatabase.getInstance().getReference("orders").child(firebaseAuth.getUid()).setValue(restaurantModel.getMenus()).addOnCompleteListener(t -> {
             if (t.isSuccessful()) {
                 Intent i = new Intent(PlaceYourOrderActivity.this, OrderSucceessActivity.class);
                 i.putExtra("RestaurantModel", restaurantModel);

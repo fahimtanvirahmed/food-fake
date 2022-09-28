@@ -134,7 +134,7 @@ public class RestaurantMenuActivity extends AppCompatActivity implements MenuLis
             case android.R.id.home:
                 finish();
             case R.id.add:
-                Log.v("id",restaurantModel.getId()+"");
+               // Log.v("id",restaurantModel.getId()+"");
                 AddMenuDialog dialog = new AddMenuDialog(restaurantModel.getId(), restaurantModel.getMenus());
                 dialog.show(getSupportFragmentManager(), dialog.getTag());
             default:

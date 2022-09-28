@@ -5,15 +5,22 @@
       <map>
         <entry key="..\:/Users/Rakib/AndroidStudioProjects/foodfake/app/src/main/res/drawable/button_bg.xml" value="0.1945" />
         <entry key="..\:/Users/Rakib/AndroidStudioProjects/foodfake/app/src/main/res/drawable/ic_remove_circle.xml" value="0.1945" />
+        <entry key="..\:/Users/Rakib/AndroidStudioProjects/foodfake/app/src/main/res/layout/activity_adminlogin.xml" value="0.1" />
+        <entry key="..\:/Users/Rakib/AndroidStudioProjects/foodfake/app/src/main/res/layout/activity_login.xml" value="0.20416666666666666" />
         <entry key="..\:/Users/Rakib/AndroidStudioProjects/foodfake/app/src/main/res/layout/activity_main.xml" value="0.20416666666666666" />
         <entry key="..\:/Users/Rakib/AndroidStudioProjects/foodfake/app/src/main/res/layout/activity_order_succeess.xml" value="0.19010416666666666" />
         <entry key="..\:/Users/Rakib/AndroidStudioProjects/foodfake/app/src/main/res/layout/activity_order_success.xml" value="0.20416666666666666" />
+        <entry key="..\:/Users/Rakib/AndroidStudioProjects/foodfake/app/src/main/res/layout/activity_orderlist.xml" value="0.20416666666666666" />
         <entry key="..\:/Users/Rakib/AndroidStudioProjects/foodfake/app/src/main/res/layout/activity_place_your_order.xml" value="0.25" />
+        <entry key="..\:/Users/Rakib/AndroidStudioProjects/foodfake/app/src/main/res/layout/activity_profile.xml" value="0.20416666666666666" />
+        <entry key="..\:/Users/Rakib/AndroidStudioProjects/foodfake/app/src/main/res/layout/activity_registration.xml" value="0.20416666666666666" />
         <entry key="..\:/Users/Rakib/AndroidStudioProjects/foodfake/app/src/main/res/layout/activity_restaurant_menu.xml" value="0.2384428223844282" />
+        <entry key="..\:/Users/Rakib/AndroidStudioProjects/foodfake/app/src/main/res/layout/activity_second.xml" value="0.20416666666666666" />
         <entry key="..\:/Users/Rakib/AndroidStudioProjects/foodfake/app/src/main/res/layout/activity_splash.xml" value="0.20416666666666666" />
         <entry key="..\:/Users/Rakib/AndroidStudioProjects/foodfake/app/src/main/res/layout/menu_recycler_row.xml" value="0.20416666666666666" />
         <entry key="..\:/Users/Rakib/AndroidStudioProjects/foodfake/app/src/main/res/layout/place_order_recycler_row.xml" value="0.20416666666666666" />
         <entry key="..\:/Users/Rakib/AndroidStudioProjects/foodfake/app/src/main/res/layout/recycler_row.xml" value="0.19010416666666666" />
+        <entry key="..\:/Users/Rakib/AndroidStudioProjects/foodfake/app/src/main/res/menu/menu.xml" value="0.20416666666666666" />
       </map>
     </option>
   </component>
