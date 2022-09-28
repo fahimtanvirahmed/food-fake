@@ -35,13 +35,11 @@ public class AdminloginActivity extends AppCompatActivity {
     }
 
     private void validate(String userName, String userPassword) {
-        if ((userName == "Admin") && (userPassword == "12345678") ){
+        if ((userName.equals("Admin")) && (userPassword.equals("12345678")) ){
             startActivity(new Intent(AdminloginActivity.this, MainActivity.class));
         } else {
             Toast.makeText(AdminloginActivity.this, "Login Failed", Toast.LENGTH_SHORT).show();
             startActivity(new Intent(AdminloginActivity.this, Orderlist.class));
-
-
         }
 
     }
